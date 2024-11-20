@@ -1,10 +1,10 @@
-package inventory;
+package Model;
 
 import java.util.Date;
 
 public abstract class InventoryClass {
-    protected int id; // Identificador único
-    protected String title; // Título del material
+    protected int id; // Identificador 
+    protected String title; // Título 
     protected ArticleType materialType; // Tipo de material (Libro, Revista, Video)
     protected String editorial; // Editorial
     protected Date publishedYear; // Año de publicación
@@ -19,9 +19,9 @@ public abstract class InventoryClass {
         this.materialType = materialType;
         this.editorial = editorial;
         this.publishedYear = publishedYear;
-        this.createdAt = new Date(); // Fecha actual
-        this.updatedAt = new Date(); // Fecha actual
-        this.availableArticle = true; // Por defecto, disponible
+        this.createdAt = new Date(); 
+        this.updatedAt = new Date(); 
+        this.availableArticle = true; 
     }
 
     // Métodos abstractos

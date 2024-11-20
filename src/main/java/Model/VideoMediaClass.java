@@ -1,12 +1,10 @@
-package article;
+package Model;
 
-import inventory.InventoryClass;
-import inventory.ArticleType;
 import java.util.Date;
 
 public class VideoMediaClass extends InventoryClass {
-    private String duration; // Duración en formato "HH:mm"
-    private String format; // Formato del video (DVD, Blu-ray, etc.)
+    private String duration; // Duración 
+    private String format; // Formato del video 
 
     public VideoMediaClass(int id, String title, String editorial, Date publishedYear, String duration, String format) {
         super(id, title, ArticleType.VIDEO_MEDIA, editorial, publishedYear);
@@ -39,7 +37,7 @@ public class VideoMediaClass extends InventoryClass {
             this.publishedYear = video.publishedYear;
             this.duration = video.duration;
             this.format = video.format;
-            this.updatedAt = new Date(); // Actualizar la fecha de modificación
+            this.updatedAt = new Date(); // Actualizar la fecha
         }
     }
 

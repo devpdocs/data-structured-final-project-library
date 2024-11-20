@@ -1,7 +1,6 @@
-package article;
+package Model;
 
-import inventory.InventoryClass;
-import inventory.ArticleType;
+
 import java.util.Date;
 
 public class BookClass extends InventoryClass {
@@ -28,7 +27,7 @@ public class BookClass extends InventoryClass {
             this.editorial = book.editorial;
             this.publishedYear = book.publishedYear;
             this.nPages = book.nPages;
-            this.updatedAt = new Date(); // Actualizar la fecha de modificación
+            this.updatedAt = new Date(); // Actualizar la fecha 
         }
     }
 

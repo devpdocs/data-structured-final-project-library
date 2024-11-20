@@ -1,11 +1,9 @@
-package article;
+package Model;
 
-import inventory.InventoryClass;
-import inventory.ArticleType;
 import java.util.Date;
 
 public class MagazineClass extends InventoryClass {
-    private String branch; // Rama o tipo de revista (ej. Ciencia ficción, Naturaleza)
+    private String branch; // Tipo de revista
     private String gender; // Género de la revista
 
     public MagazineClass(int id, String title, String editorial, Date publishedYear, String branch, String gender) {
@@ -39,7 +37,7 @@ public class MagazineClass extends InventoryClass {
             this.publishedYear = magazine.publishedYear;
             this.branch = magazine.branch;
             this.gender = magazine.gender;
-            this.updatedAt = new Date(); // Actualizar la fecha de modificación
+            this.updatedAt = new Date(); // Actualizar la fecha 
         }
     }
 
