@@ -4,13 +4,11 @@
 
 package com.mycompany.library;
 
-/**
- *
- * @author moies
- */
+
 public class Library {
 
     public static void main(String[] args) {
-        System.out.println("juan felipe usuga");
+        System.out.println("bienvenido a la La biblioteca municipal XYZ");
     }
 }
+
