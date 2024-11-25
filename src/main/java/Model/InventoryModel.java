@@ -1,11 +1,11 @@
 package Model;
-
+import Interfaces.MaterialType;
 import java.util.Date;
 
 public abstract class InventoryModel {
     protected int id; // Identificador 
     protected String title; // Título del material
-    protected String materialType; // Tipo de material 
+    protected MaterialType materialType; // Tipo de material 
     protected String editorial; // Editorial
     protected Date publishedYear; // Año de publicación
     protected Date createdAt; // Fecha de creación
