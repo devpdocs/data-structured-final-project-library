@@ -150,13 +150,54 @@ public class VideoMediaView {
     
     public static void removeVideoMedia() {
         
-        int id;
+        System.out.println("Por favor, ingrese el ID del Video que desea borrar: ");
+    int id = scan.nextInt();
+    scan.nextLine();
+
+    
+    System.out.println("Ha ingresado el ID: " + id);
+    System.out.println("¿Está seguro de que desea borrar este Video? (S/N): ");
+    String confirmacion = scan.nextLine().toUpperCase();
+
+    
+    if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("El Video con ID " + id + " ha sido eliminado.");
         
-    } 
+    } else {
+        System.out.println("Operación cancelada. El Video no ha sido borrado.");
+    }
+    
+    
+    }
+    
     
     public static void listVideoMedia() {
         
-        int id;
+        System.out.println("Por favor, ingrese el ID del  Video que desea listar: ");
+        int id = scan.nextInt();
+    scan.nextLine();
+
+    
+        System.out.println("Ha ingresado el ID: " + id);
+        System.out.println("¿Está seguro de que desea listar este Video? (S/N): ");
+        String confirmacion = scan.nextLine().toUpperCase();
+
+     
+        if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("El Video con ID " + id + " ha sido listado.");
+        
+        } else {
+        System.out.println("Operación cancelada.");
+        }
+        
+    }
+     
+    
+    public static void listMagazines() {
+        
+        
+        
+    }
         
     } 
     
