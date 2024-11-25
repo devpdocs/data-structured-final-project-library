@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
  * @author moies
  */
 public class BookController  implements IInventoryController{
+    private final ArrayList<String> bookList = new ArrayList<>();
 
     @Override
     public <T> T insertArticle(T article) throws IllegalAccessException {
