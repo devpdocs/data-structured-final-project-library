@@ -4,7 +4,7 @@
  */
 package dataAccess.utils;
 
-import dataAccess.controller.InventoryController;
+import dataAccess.controller.InventoryAccessController;
 import java.io.File;
 import java.net.URISyntaxException;
 
@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
  * @author moies
  */
 public class FilePath {
-    static InventoryController dataController = new InventoryController();
+    static InventoryAccessController dataController = new InventoryAccessController();
     
     public static File path (String file) throws URISyntaxException{
         File pathFile = dataController.readFromLocalDB(file);

@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  *
  * @author moies
  */
-public class InventoryController  implements IInventoryController{
+public class BookController  implements IInventoryController{
 
     @Override
     public <T> T insertArticle(T article) throws IllegalAccessException {

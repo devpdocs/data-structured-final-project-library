@@ -13,7 +13,7 @@ import java.net.URL;
  *
  * @author moies
  */
-public class InventoryController implements IInventoryController{
+public class InventoryAccessController implements IInventoryController{
 
     @Override
     public File readFromLocalDB(String file) throws URISyntaxException {
