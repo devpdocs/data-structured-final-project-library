@@ -149,13 +149,45 @@ public class BookView {
     
     public static void removeBook() {
         
-        int id;
+    
+    System.out.println("Por favor, ingrese el ID del libro que desea borrar: ");
+    int id = scan.nextInt();
+    scan.nextLine();
+
+    
+    System.out.println("Ha ingresado el ID: " + id);
+    System.out.println("¿Está seguro de que desea borrar este libro? (S/N): ");
+    String confirmacion = scan.nextLine().toUpperCase();
+
+    
+    if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("El libro con ID " + id + " ha sido eliminado.");
         
-    } 
+    } else {
+        System.out.println("Operación cancelada. El libro no ha sido borrado.");
+    }
+
+     
     
     public static void listBook() {
         
-        int id;
+        
+        System.out.println("Por favor, ingrese el ID del libro que desea listar: ");
+        int id = scan.nextInt();
+    scan.nextLine();
+
+    
+        System.out.println("Ha ingresado el ID: " + id);
+        System.out.println("¿Está seguro de que desea listar este libro? (S/N): ");
+        String confirmacion = scan.nextLine().toUpperCase();
+
+     
+        if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("El libro con ID " + id + " ha sido listado.");
+        
+        } else {
+        System.out.println("Operación cancelada.");
+        }
         
     } 
     
