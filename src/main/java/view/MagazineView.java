@@ -173,13 +173,45 @@ public class MagazineView {
     
     public static void removeMagazine() {
         
-        int id;
+        System.out.println("Por favor, ingrese el ID de la revista que desea borrar: ");
+    int id = scan.nextInt();
+    scan.nextLine();
+
+    
+    System.out.println("Ha ingresado el ID: " + id);
+    System.out.println("¿Está seguro de que desea borrar esta revista? (S/N): ");
+    String confirmacion = scan.nextLine().toUpperCase();
+
+    
+    if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("La revista con ID " + id + " ha sido eliminada.");
+        
+    } else {
+        System.out.println("Operación cancelada. La revista no ha sido borrada.");
+    }
     } 
     
     public static void listMagazine() {
         
-        int id;
-    } 
+        System.out.println("Por favor, ingrese el ID de La revista que desea listar: ");
+        int id = scan.nextInt();
+    scan.nextLine();
+
+    
+        System.out.println("Ha ingresado el ID: " + id);
+        System.out.println("¿Está seguro de que desea listar esta revista? (S/N): ");
+        String confirmacion = scan.nextLine().toUpperCase();
+
+     
+        if (confirmacion.equalsIgnoreCase("S")) {
+        System.out.println("La revista con ID " + id + " ha sido listada.");
+        
+        } else {
+        System.out.println("Operación cancelada.");
+        }
+        
+    }
+     
     
     public static void listMagazines() {
         
