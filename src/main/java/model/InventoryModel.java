@@ -1,8 +1,10 @@
-package Model;
-import Interfaces.MaterialType;
+package model;
+
+import interfaces.MaterialType;
 import java.time.LocalDate;
 
 abstract class InventoryModel {
+
     protected int id;
     protected String title;
     protected String author;

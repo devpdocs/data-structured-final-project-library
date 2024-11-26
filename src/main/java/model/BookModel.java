@@ -18,11 +18,10 @@ public class BookModel extends InventoryModel {
             boolean availableArticle,
             LocalDate createdAt,
             LocalDate updatedAt,
-            int ncopy;
+            int ncopy
     ) {
         super(id, title, author, editorial, publishedYear, MaterialType.BOOK, availableArticle, createdAt, updatedAt, ncopy);
         this.nPages = nPages;
-        
 
     }
 
