@@ -6,7 +6,7 @@ package controller.interfaces;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+
 
 /**
  *
@@ -16,7 +16,7 @@ public interface IInventoryController {
 
     ArrayList articles = new ArrayList();
 
-    public <T> T insertArticle(T article, Optional<String> sw) throws IllegalAccessException;
+    public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException;
 
     public <T> T updatedArticle(T article, int id) throws IllegalAccessException;
 

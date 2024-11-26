@@ -1,9 +1,14 @@
 
 package com.mycompany.library;
 
-public class Library {
+import view.BookView;
 
-    public static void main(String[] args) {
-        
+
+public class Library {
+ 
+
+    public static void main(String[] args) throws IllegalAccessException {
+        BookView.insertBook();
     }
 }
+

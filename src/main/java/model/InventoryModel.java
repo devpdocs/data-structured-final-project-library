@@ -1,7 +1,6 @@
 package model;
 
 import interfaces.MaterialType;
-import java.time.LocalDate;
 
 abstract class InventoryModel {
 
@@ -12,8 +11,8 @@ abstract class InventoryModel {
     protected String publishedYear;
     protected MaterialType materialType;
     protected boolean availableArticle;
-    protected LocalDate createAt;
-    protected LocalDate updatedAt;
+    protected String createAt;
+    protected String updatedAt;
     protected int ncopy;
 
     public int getId() {
@@ -72,19 +71,19 @@ abstract class InventoryModel {
         this.availableArticle = availableArticle;
     }
 
-    public LocalDate getCreateAt() {
+    public String getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(LocalDate createAt) {
+    public void setCreateAt(String createAt) {
         this.createAt = createAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -96,7 +95,7 @@ abstract class InventoryModel {
         this.ncopy = ncopy;
     }
 
-    public InventoryModel(int id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, LocalDate createAt, LocalDate updatedAt, int ncopy) {
+    public InventoryModel(int id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, String createAt, String updatedAt, int ncopy) {
         this.id = id;
         this.title = title;
         this.author = author;

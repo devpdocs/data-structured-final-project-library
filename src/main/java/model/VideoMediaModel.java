@@ -1,7 +1,7 @@
 package model;
 
 import interfaces.MaterialType;
-import java.time.LocalDate;
+
 
 public class VideoMediaModel extends InventoryModel {
 
@@ -14,8 +14,8 @@ public class VideoMediaModel extends InventoryModel {
             String publishedYear,
             MaterialType materialType,
             boolean availableArticle,
-            LocalDate createdAt,
-            LocalDate updatedAt,
+            String createdAt,
+            String updatedAt,
             int ncopy) {
         super(id, title, author, editorial, publishedYear, MaterialType.VIDEO_MEDIA, availableArticle, createdAt, updatedAt, ncopy);
         this.hours = hours;

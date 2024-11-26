@@ -1,23 +1,23 @@
 package model;
 
 import interfaces.MaterialType;
-import java.time.LocalDate;
+
 
 public class BookModel extends InventoryModel {
 
     private int nPages; // Número de páginas del libro
 
     public BookModel(
-            int nPages,
             int id,
+            int nPages,
             String title,
             String author,
             String editorial,
             String publishedYear,
             MaterialType materialType,
             boolean availableArticle,
-            LocalDate createdAt,
-            LocalDate updatedAt,
+            String createdAt,
+            String updatedAt,
             int ncopy
     ) {
         super(id, title, author, editorial, publishedYear, MaterialType.BOOK, availableArticle, createdAt, updatedAt, ncopy);

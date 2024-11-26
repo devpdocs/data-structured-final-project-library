@@ -20,7 +20,7 @@ public class BookAccessController implements IInventoryController {
     private final DataManager dataManager = new DataManager();
     private final String path = "books.json";
     @Override
-    public <T> T insertArticle(T articles, Optional<String> sw) throws IllegalAccessException {
+    public <T> ArrayList<T> insertArticle(T articles, char sw) throws IllegalAccessException {
         
         ArrayList<BookModel> books = (ArrayList<BookModel>) articles; 
         try {

@@ -6,6 +6,7 @@ package controller;
 
 import controller.interfaces.IInventoryController;
 import dataAccess.controller.BookAccessController;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,22 +22,26 @@ public class BookController implements IInventoryController {
     private final BookAccessController access = new BookAccessController();
 
     @Override
-    public <T> T insertArticle(T article, Optional<String> sw) throws IllegalAccessException {
+    public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException {
         try {
             if (article == null) {
-                return article;
+                return null;
             } else {
                 // Narrowing Casting object
                 BookModel bookArticle = (BookModel) article;
+                // book id
+                int id = bookArticleList.size(); 
+                bookArticle.setId(id);
+                bookArticle.setCreateAt(LocalDate.now().toString());
+                bookArticle.setUpdatedAt(LocalDate.now().toString());
+                
                 this.bookArticleList.add(bookArticle);
 
-                if (!sw.isPresent()) {
-                    return null;
-                }
-
-                if (sw.get().equals("N")) {
+                if (sw == 'N') {
                     // TODO: when the 'sw' contains 'N',that's means than the data must be saved 
-                    access.insertArticle(this.bookArticleList, null);
+                    access.insertArticle(this.bookArticleList, 'N');
+                    
+                    return (ArrayList<T>) this.bookArticleList;
 
                 }
 
