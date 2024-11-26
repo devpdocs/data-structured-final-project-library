@@ -1,29 +1,18 @@
 package Model;
 import Interfaces.MaterialType;
-import java.util.Date;
+import java.time.LocalDate;
 
-public abstract class InventoryModel {
-    protected int id; // Identificador 
-    protected String title; // Título del material
-    protected MaterialType materialType; // Tipo de material 
-    protected String editorial; // Editorial
-    protected Date publishedYear; // Año de publicación
-    protected Date createdAt; // Fecha de creación
-    protected Date updatedAt; // Fecha de última actualización
-    protected boolean availableArticle; // Indica si está disponible para préstamo
-    protected int ncopy;//Numero de copias 
-
-    public InventoryModel(int id, String title, String materialType, String editorial, Date publishedYear, Date createdAt, Date updatedAt, boolean availableArticle, int ncopy) {
-        this.id = id;
-        this.title = title;
-        this.materialType = materialType;
-        this.editorial = editorial;
-        this.publishedYear = publishedYear;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.availableArticle = availableArticle;
-        this.ncopy = ncopy;
-    }
+abstract class InventoryModel {
+    protected int id;
+    protected String title;
+    protected String author;
+    protected String editorial;
+    protected String publishedYear;
+    protected MaterialType materialType;
+    protected boolean availableArticle;
+    protected LocalDate createAt;
+    protected LocalDate updatedAt;
+    protected int ncopy;
 
     public int getId() {
         return id;
@@ -41,12 +30,12 @@ public abstract class InventoryModel {
         this.title = title;
     }
 
-    public String getMaterialType() {
-        return materialType;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setMaterialType(String materialType) {
-        this.materialType = materialType;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getEditorial() {
@@ -57,28 +46,20 @@ public abstract class InventoryModel {
         this.editorial = editorial;
     }
 
-    public Date getPublishedYear() {
+    public String getPublishedYear() {
         return publishedYear;
     }
 
-    public void setPublishedYear(Date publishedYear) {
+    public void setPublishedYear(String publishedYear) {
         this.publishedYear = publishedYear;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public MaterialType getMaterialType() {
+        return materialType;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setMaterialType(MaterialType materialType) {
+        this.materialType = materialType;
     }
 
     public boolean isAvailableArticle() {
@@ -89,6 +70,22 @@ public abstract class InventoryModel {
         this.availableArticle = availableArticle;
     }
 
+    public LocalDate getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDate createAt) {
+        this.createAt = createAt;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public int getNcopy() {
         return ncopy;
     }
@@ -96,7 +93,18 @@ public abstract class InventoryModel {
     public void setNcopy(int ncopy) {
         this.ncopy = ncopy;
     }
-    
 
-   
+    public InventoryModel(int id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, LocalDate createAt, LocalDate updatedAt, int ncopy) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.editorial = editorial;
+        this.publishedYear = publishedYear;
+        this.materialType = materialType;
+        this.availableArticle = availableArticle;
+        this.createAt = createAt;
+        this.updatedAt = updatedAt;
+        this.ncopy = ncopy;
+    }
+
 }
