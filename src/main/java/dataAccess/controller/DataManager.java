@@ -4,16 +4,21 @@
  */
 package dataAccess.controller;
 
-import dataAccess.interfaces.IInventoryController;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+import dataAccess.interfaces.IInventoryAccessController;
+import dataAccess.utils.FilePath;
+import dataAccess.utils.Mapper;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author moies
  */
-public class InventoryAccessController implements IInventoryController{
+public class DataManager implements IInventoryAccessController{
 
     @Override
     public File readFromLocalDB(String file) throws URISyntaxException {
@@ -26,9 +31,16 @@ public class InventoryAccessController implements IInventoryController{
         }
     }
 
+
+
     @Override
-    public void writeFromLocalDB() throws URISyntaxException {
-        
+    public <T> void writeFromLocalDB(String path, T obj) throws URISyntaxException {
+        File file = FilePath.path(path);
+        try {
+            Mapper.mapper.writeValue(file, obj);
+        } catch (IOException ex) {
+            Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

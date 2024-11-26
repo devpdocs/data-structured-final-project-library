@@ -11,5 +11,5 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author moies
  */
 public class Mapper {
-    static ObjectMapper mapper = new ObjectMapper();
+    public static ObjectMapper mapper = new ObjectMapper();
 }

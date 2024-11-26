@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
  *
  * @author moies
  */
-public interface IInventoryController {
+public interface IInventoryAccessController {
 
     /**
      *
@@ -20,5 +20,5 @@ public interface IInventoryController {
      * @throws java.net.URISyntaxException
      */
     public File readFromLocalDB(String file) throws URISyntaxException;   
-    public void writeFromLocalDB() throws URISyntaxException;
+    public  <T>  void  writeFromLocalDB(String path, T obj) throws URISyntaxException;
 }
