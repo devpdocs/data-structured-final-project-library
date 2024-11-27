@@ -25,7 +25,7 @@ public class BookModel extends InventoryModel {
 
     }
 
-    public int getNPages() {
+    public Integer getNPages() {
         return nPages;
     }
 

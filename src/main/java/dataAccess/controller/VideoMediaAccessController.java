@@ -8,26 +8,24 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.BookModel;
+import model.VideoMediaModel;
 
 /**
  *
  * @author moies
  */
-public class BookAccessController {
-
+public class VideoMediaAccessController {
     private final DataManager dataManager = new DataManager();
-    private final String path = "books.json";
+    private final String path = "video-media.json";
 
     public <T> ArrayList<T> accessData(T articles) throws IllegalAccessException {
 
-        ArrayList<BookModel> books = (ArrayList<BookModel>) articles;
+        ArrayList<VideoMediaModel> videos = (ArrayList<VideoMediaModel>) articles;
         try {
-            this.dataManager.writeFromLocalDB(this.path, books);
+            this.dataManager.writeFromLocalDB(this.path, videos);
         } catch (URISyntaxException ex) {
             Logger.getLogger(BookAccessController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
 }

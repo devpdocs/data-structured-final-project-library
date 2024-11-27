@@ -1,5 +1,4 @@
 package model;
-
 import interfaces.MaterialType;
 
 abstract class InventoryModel {
@@ -13,7 +12,7 @@ abstract class InventoryModel {
     protected boolean availableArticle;
     protected String createAt;
     protected String updatedAt;
-    protected int ncopy;
+    protected Integer ncopy;
 
     public String getId() {
         return id;
@@ -87,15 +86,15 @@ abstract class InventoryModel {
         this.updatedAt = updatedAt;
     }
 
-    public int getNcopy() {
+    public Integer getNcopy() {
         return ncopy;
     }
 
-    public void setNcopy(int ncopy) {
+    public void setNcopy(Integer ncopy) {
         this.ncopy = ncopy;
     }
 
-    public InventoryModel(String id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, String createAt, String updatedAt, int ncopy) {
+    public InventoryModel(String id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, String createAt, String updatedAt, Integer ncopy) {
         this.id = id;
         this.title = title;
         this.author = author;

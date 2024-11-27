@@ -8,10 +8,19 @@ import controller.interfaces.IInventoryController;
 import dataAccess.controller.BookAccessController;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
 import model.BookModel;
 import query.Query;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+enum Keys {
+    id,
+    title,
+    author
+}
 
 /**
  *
@@ -20,16 +29,20 @@ import java.util.UUID;
 public class BookController implements IInventoryController {
     private final BookAccessController access = new BookAccessController();
     private final ArrayList<BookModel> query;
+    private final ArrayList<LinkedHashMap<String, Object>> _query;
 
     public BookController() {
         this.query = Query.<BookModel>get("books.json");
+        this._query = Query.<LinkedHashMap<String, Object>>get("books.json");
+      
     }
 
     @Override
-    public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException {
+    public <T> boolean insertArticle(T article) throws IllegalAccessException {
+        
         try {
             if (article == null) {
-                return null;
+                return false;
             } else {
             
                 BookModel bookArticle = (BookModel) article;
@@ -41,69 +54,105 @@ public class BookController implements IInventoryController {
                 bookArticle.setUpdatedAt(LocalDate.now().toString());
                 
                 query.add(bookArticle);
+                access.accessData(query);
                 
-                if (sw == 'N') {
-                    access.accessData(query);
-                    return (ArrayList<T>) query;
-
-                }
 
             }
         } catch (IllegalAccessException err) {
-            return null;
+            return false;
 
         }
-        return null;
+        return true;
     }
 
     @Override
-    public <T> T updatedArticle(T article) throws IllegalAccessException {
+    public <T> boolean updatedArticle(T article) throws IllegalAccessException {
         BookModel book = (BookModel) article;
         
+        if (book == null){
+            return false;
+        }
+            
         
-        try {
-            ArrayList<BookModel> queryset = query;
-            
-            for (int index = 0; index < queryset.size(); index++){
-                BookModel _book = queryset.get(index);
+        
+        for (LinkedHashMap<String, Object> entity : _query) {
+
+            if(entity.firstEntry().getValue().equals(book.getId())){
                 
-                if (book.getId() == null ? _book.getId() == null : book.getId().equals(_book.getId())){
-                    queryset.remove(index);
-                    
-                    book.setCreateAt(_book.getCreateAt());
-                    book.setUpdatedAt(LocalDate.now().toString());
-                    
-                    queryset.add(book);
-                    
-                } else {
-                    return null;
-                }
+                entity.replace("title", book.getTitle());
+                entity.replace("author", book.getAuthor());
+                entity.replace("editorial", book.getEditorial());
+                entity.replace("publishedYear", book.getPublishedYear());
+                entity.replace("availableArticle", book.isAvailableArticle());
+                entity.replace("nPages", book.getNPages());
+                entity.replace("ncopy", book.getNcopy());
+                entity.replace("updatedAt", LocalDate.now().toString());
+                
+                System.out.println(_query);
+                System.out.println(_query);
+                
+                access.accessData(_query);
+                
+                return true;
+                
             }
-            
-            
-            access.accessData(queryset);
-            
-        } catch (IllegalAccessException e){
-            return null;
+                    
         }
         
-        return null;
+        
+        
+        return false;
         
     }
 
     @Override
-    public <T> T getArticle(int id) throws NoSuchElementException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public <T> T getArticle(String id) throws NoSuchElementException {
+        if (id == null){
+            return null;
+        }
+        
+        
+        for (LinkedHashMap<String, Object> entity : _query) {
+
+            if(entity.firstEntry().getValue().equals(id)){
+                return (T) entity;
+            }
+                    
+        }
+        
+        return null;
+        
+       
     }
 
     @Override
     public <T> ArrayList<T> getArticles() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return (ArrayList<T>) _query;
     }
 
     @Override
-    public <T> T removedArticle(int id) throws NoSuchElementException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public <T> boolean removedArticle(String id) throws NoSuchElementException {
+        for (int index = 0; index < _query.size(); index++) {
+
+            if(_query.get(index).firstEntry().getValue().equals(id)){
+                
+               
+                query.remove(index);
+                
+                try {
+                    access.accessData(query);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                return true;
+                
+            }
+                    
+        }
+        return false;
+        
     }
     
     

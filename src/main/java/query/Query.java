@@ -22,9 +22,9 @@ public class Query {
             File file = FileFromResources.path(path);
 
             try {
-                getLsit = Mapper.mapper.readValue(file, new TypeReference<ArrayList<T>>() {
+                return Mapper.mapper.readValue(file, new TypeReference<ArrayList<T>>() {
                 });
-                return getLsit;
+                
             } catch (IOException err) {
                 return getLsit;
             }

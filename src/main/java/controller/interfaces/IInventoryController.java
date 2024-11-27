@@ -16,14 +16,14 @@ public interface IInventoryController {
 
     ArrayList articles = new ArrayList();
 
-    public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException;
+    public <T> boolean insertArticle(T article) throws IllegalAccessException;
 
-    public <T> T updatedArticle(T article) throws IllegalAccessException;
+    public <T> boolean updatedArticle(T article) throws IllegalAccessException;
 
-    public <T> T getArticle(int id) throws NoSuchElementException;
+    public <T> T getArticle(String id) throws NoSuchElementException;
 
     public <T> ArrayList<T> getArticles();
     
-    public <T> T removedArticle (int id) throws NoSuchElementException;
+    public <T> boolean removedArticle (String id) throws NoSuchElementException;
 
 }
