@@ -7,7 +7,6 @@ package view;
 import controller.BookController;
 import dto.Generic;
 import interfaces.MaterialType;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.BookModel;
