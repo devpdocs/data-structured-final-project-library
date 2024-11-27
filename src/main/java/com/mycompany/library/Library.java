@@ -1,14 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
 package com.mycompany.library;
 
+import view.BookView;
+
 
 public class Library {
+ 
 
-    public static void main(String[] args) {
-        System.out.println("bienvenido a la La biblioteca municipal XYZ");
+    public static void main(String[] args) throws IllegalAccessException {
+        BookView.insertBook();
     }
 }
 

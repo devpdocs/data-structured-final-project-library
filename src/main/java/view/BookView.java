@@ -4,7 +4,13 @@
  */
 package view;
 
+import controller.BookController;
+import dto.Generic;
+import interfaces.MaterialType;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import model.BookModel;
 
 /**
  *
@@ -12,13 +18,17 @@ import java.util.Scanner;
  */
 public class BookView {
 
-    private static Scanner scan = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
+    static BookController controller = new BookController();
 
-    public static void insertBook() {
+    public static void insertBook() throws IllegalAccessException {
 
         char sw;
+        
         do {
-            System.out.println("Ingrese el Titulo de libro: ");
+            
+            System.out.println("\nIngrese el Titulo de libro: ");
+            scan.next();
             String title = scan.nextLine();
 
             System.out.println("Ingrese el Nombre del autor: ");
@@ -28,7 +38,8 @@ public class BookView {
             String publishedYear = scan.nextLine();
 
             System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
-            boolean availableArticle = scan.nextBoolean();
+            String isAvailable = scan.nextLine();
+            var availableArticle = "S".equals(isAvailable) ? true : false;
 
             System.out.println("Ingrese la Casa editorial: ");
             String editorial = scan.nextLine();
@@ -38,10 +49,32 @@ public class BookView {
 
             System.out.println("Ingrese el Numero de copias: ");
             int copies = scan.nextInt();
+           
 
+            BookModel book = new BookModel(
+                    0,
+                    nPages,
+                    title,
+                    author,
+                    editorial,
+                    publishedYear,
+                    MaterialType.BOOK,
+                    availableArticle,
+                    "",
+                    "",
+                    copies
+            );
+            
+            Generic<BookModel> obj = new Generic<>();
+            obj.setContent(book);
+           
             System.out.println("\nDesea ingresar otro Libro (S/N): ");
+             sw = scan.next().toUpperCase().charAt(0);
+            ArrayList<BookModel> insertArticle = controller.insertArticle(obj.getContent(), sw);
+            
+            
 
-            sw = scan.next().toUpperCase().charAt(0);
+           
         } while (sw == 'S');
 
     }
@@ -60,64 +93,64 @@ public class BookView {
 
         do {
             System.out.println("¿Desea actualizar el Título del libro? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Título: ");
-                title = scan.nextLine();
+                title = scan.next();
             }
 
             System.out.println("¿Desea actualizar el Autor? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Autor: ");
-                author = scan.nextLine();
+                author = scan.next();
             }
 
             System.out.println("¿Desea actualizar el Tipo de material? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Tipo de material: ");
-                materialType = scan.nextLine();
+                materialType = scan.next();
             }
 
             System.out.println("¿Desea actualizar el Año de publicación? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Año de publicación: ");
-                publishedYear = scan.nextLine();
+                publishedYear = scan.next();
             }
 
             System.out.println("¿Desea actualizar la disponibilidad? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese si está disponible (true/false): ");
                 availableArticle = scan.nextBoolean();
-                scan.nextLine();
+                scan.next();
             }
 
             System.out.println("¿Desea actualizar la Editorial? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese la nueva Editorial: ");
-                editorial = scan.nextLine();
+                editorial = scan.next();
             }
 
             System.out.println("¿Desea actualizar el Número de páginas? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Número de páginas: ");
                 nPages = scan.nextInt();
-                scan.nextLine();
+                scan.next();
             }
 
             System.out.println("¿Desea actualizar el Número de copias? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo Número de páginas: ");
                 copies = scan.nextInt();
-                scan.nextLine();
+                scan.next();
             }
 
             System.out.println("¿Desea actualizar el ID del libro? (S/N): ");
-            if (scan.nextLine().equalsIgnoreCase("S")) {
+            if (scan.next().equalsIgnoreCase("S")) {
                 System.out.println("Ingrese el nuevo ID: ");
                 id = scan.nextInt();
-                scan.nextLine();
+                scan.next();
             }
 
-        } while (scan.nextLine().equalsIgnoreCase("S"));
+        } while (scan.next().equalsIgnoreCase("S"));
 
 //        System.out.println("Actualización completada:");
 //        System.out.println("Título: " + title);
@@ -136,11 +169,11 @@ public class BookView {
 
         System.out.println("Por favor, ingrese el ID del libro que desea borrar: ");
         int id = scan.nextInt();
-        scan.nextLine();
+        scan.next();
 
         System.out.println("Ha ingresado el ID: " + id);
         System.out.println("¿Está seguro de que desea borrar este libro? (S/N): ");
-        String confirmacion = scan.nextLine().toUpperCase();
+        String confirmacion = scan.next().toUpperCase();
 
         if (confirmacion.equalsIgnoreCase("S")) {
             System.out.println("El libro con ID " + id + " ha sido eliminado.");
@@ -154,11 +187,11 @@ public class BookView {
 
         System.out.println("Por favor, ingrese el ID del libro que desea listar: ");
         int id = scan.nextInt();
-        scan.nextLine();
+        scan.next();
 
         System.out.println("Ha ingresado el ID: " + id);
         System.out.println("¿Está seguro de que desea listar este libro? (S/N): ");
-        String confirmacion = scan.nextLine().toUpperCase();
+        String confirmacion = scan.next().toUpperCase();
 
         if (confirmacion.equalsIgnoreCase("S")) {
             System.out.println("El libro con ID " + id + " ha sido listado.");

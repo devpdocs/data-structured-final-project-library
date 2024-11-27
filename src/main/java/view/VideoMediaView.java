@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package view;
 import java.util.Scanner;
 /**
@@ -10,8 +7,6 @@ import java.util.Scanner;
  */
 public class VideoMediaView {
     
-    
-    private static VideoMediaView Video = new VideoMediaView();
     private static Scanner scan = new Scanner(System.in);
     
     public static void updateVideoMedia() {
@@ -89,16 +84,16 @@ public class VideoMediaView {
       }  while (scan.nextLine().equalsIgnoreCase("S"));  
 
         
-        System.out.println("Actualización completada:");
-        System.out.println("Título: " + title);
-        System.out.println("Autor: " + author);
-        System.out.println("Tipo de material: " + materialType);
-        System.out.println("Año de publicación: " + publishedYear);
-        System.out.println("Disponible: " + availableArticle);
-        System.out.println("Editorial: " + editorial);
-        System.out.println("Número de Horas: " + hours);
-        System.out.println("Número de Copias: " + copies);
-        System.out.println("ID: " + id);
+//        System.out.println("Actualización completada:");
+//        System.out.println("Título: " + title);
+//        System.out.println("Autor: " + author);
+//        System.out.println("Tipo de material: " + materialType);
+//        System.out.println("Año de publicación: " + publishedYear);
+//        System.out.println("Disponible: " + availableArticle);
+//        System.out.println("Editorial: " + editorial);
+//        System.out.println("Número de Horas: " + hours);
+//        System.out.println("Número de Copias: " + copies);
+//        System.out.println("ID: " + id);
 
         scan.close();
           
@@ -199,7 +194,7 @@ public class VideoMediaView {
         
     }
         
-    } 
+    
     
     public static void listVideoMedias() {
         

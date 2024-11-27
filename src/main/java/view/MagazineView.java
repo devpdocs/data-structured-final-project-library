@@ -106,18 +106,18 @@ public class MagazineView {
       }  while (scan.nextLine().equalsIgnoreCase("S"));  
 
         
-        System.out.println("Actualización completada:");
-        System.out.println("Título: " + title);
-        System.out.println("Autor: " + author);
-        System.out.println("Tipo de material: " + materialType);
-        System.out.println("Año de publicación: " + publishedYear);
-        System.out.println("Disponible: " + availableArticle);
-        System.out.println("Editorial: " + editorial);
-        System.out.println("Número de páginas: " + nPages);
-        System.out.println("Genero: " + gender);
-        System.out.println("Marca: " + brand);
-        System.out.println("Número de Copias: " + copies);
-        System.out.println("ID: " + id);
+//        System.out.println("Actualización completada:");
+//        System.out.println("Título: " + title);
+//        System.out.println("Autor: " + author);
+//        System.out.println("Tipo de material: " + materialType);
+//        System.out.println("Año de publicación: " + publishedYear);
+//        System.out.println("Disponible: " + availableArticle);
+//        System.out.println("Editorial: " + editorial);
+//        System.out.println("Número de páginas: " + nPages);
+//        System.out.println("Genero: " + gender);
+//        System.out.println("Marca: " + brand);
+//        System.out.println("Número de Copias: " + copies);
+//        System.out.println("ID: " + id);
 
         scan.close();
           
