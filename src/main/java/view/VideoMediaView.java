@@ -1,205 +1,211 @@
-
 package view;
+
+import dto.Generic;
+import interfaces.MaterialType;
 import java.util.Scanner;
+import controller.VideoMeidaController;
+import java.util.LinkedHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.VideoMediaModel;
+
 /**
  *
  * @author arqua
  */
 public class VideoMediaView {
-    
-    private static Scanner scan = new Scanner(System.in);
-    
-    public static void updateVideoMedia() {
-        
-          String title;
-          String author;
-          String materialType; 
-          String publishedYear;
-          boolean availableArticle;
-          String editorial;
-          String hours;
-          int id;
-          int copies;
-          
-     do {     
-          System.out.println("¿Desea actualizar el Titulo de la revista (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Título: ");
-            title = scan.nextLine();
-        }
 
-        System.out.println("¿Desea actualizar el Autor? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Autor: ");
-            author = scan.nextLine();
-        }
+    static Scanner scan = new Scanner(System.in);
 
-        System.out.println("¿Desea actualizar el Tipo de material? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Tipo de material: ");
-            materialType = scan.nextLine();
-        }
+    static VideoMeidaController controller = new VideoMeidaController();
 
-        System.out.println("¿Desea actualizar el Año de publicación? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Año de publicación: ");
-            publishedYear = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar la disponibilidad? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese si está disponible (true/false): ");
-            availableArticle = scan.nextBoolean();
-            scan.nextLine(); 
-        }
-
-        System.out.println("¿Desea actualizar la Editorial? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese la nueva Editorial: ");
-            editorial = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar el Número de Horas? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Número de Horas: ");
-            hours = scan.nextLine();
-            scan.nextLine(); 
-        }
-        
-        System.out.println("¿Desea actualizar la cantidad de copias? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo ID: ");
-            copies = scan.nextInt();
-            scan.nextLine(); 
-        }
-        
-        
-        System.out.println("¿Desea actualizar el ID de la revista? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo ID: ");
-            id = scan.nextInt();
-            scan.nextLine(); 
-        }
-        
-      }  while (scan.nextLine().equalsIgnoreCase("S"));  
-
-        
-//        System.out.println("Actualización completada:");
-//        System.out.println("Título: " + title);
-//        System.out.println("Autor: " + author);
-//        System.out.println("Tipo de material: " + materialType);
-//        System.out.println("Año de publicación: " + publishedYear);
-//        System.out.println("Disponible: " + availableArticle);
-//        System.out.println("Editorial: " + editorial);
-//        System.out.println("Número de Horas: " + hours);
-//        System.out.println("Número de Copias: " + copies);
-//        System.out.println("ID: " + id);
-
-        scan.close();
-          
-    } 
-    
     public static void insertVideoMedia() {
-        
-        
-          
-          String title;
-          String author;
-          String materialType; 
-          String publishedYear;
-         boolean availableArticle;
-          String editorial;
-          String hours;
-          int    id;
-          int    copies;
-          
-          
-            System.out.println("Ingrese el Titulo del Video: ");
-            title = scan.nextLine();
-            
-            System.out.println("Ingrese el Nombre del autor: ");
-            author = scan.nextLine();
-            
-            System.out.println("Ingrese el Tipo de material: ");
-            materialType = scan.nextLine();
-            
-            System.out.println("Ingrese el Año de publicacion: ");
-            publishedYear = scan.nextLine();
-            
-            System.out.println("Ingrese si esta Disponible: S/N ");
-            availableArticle = scan.nextBoolean();
-            
-            System.out.println("Ingrese la Casa editorial: ");
-            editorial = scan.nextLine();
-            
-            System.out.println("Ingrese la cantidad de horas con minutos. HH:MM:  ");
-            hours = scan.nextLine();
-            
-            System.out.println("Ingrese la cantidad de copias del video:  ");
-            hours = scan.nextLine();
-            
-            System.out.println("Ingrese el ID para el Video: ");
-            id = scan.nextInt();
-        
-    } 
-    
+
+        char sw;
+
+        do {
+
+            scan.nextLine();
+            System.out.println("Ingrese el Titulo de Material Videografico: ");
+            String title = scan.nextLine();
+
+            System.out.println("Ingrese el Nombre del director: ");
+            String author = scan.nextLine();
+
+            System.out.println("Ingrese el Año de Lanzamiento: ");
+            String publishedYear = scan.nextLine();
+
+            System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
+            String isAvailable = scan.nextLine();
+            var availableArticle = "S".equals(isAvailable.toUpperCase()) ? true : false;
+
+            System.out.println("Ingrese el estudio de grabación: ");
+            String editorial = scan.nextLine();
+
+            System.out.println("Ingrese la cantidad de horas que dura el largometraje: ");
+            String hours = scan.nextLine();
+
+            System.out.println("Ingrese el Numero de copias: ");
+            int copies = scan.nextInt();
+
+            VideoMediaModel videoMedia;
+            videoMedia = new VideoMediaModel(
+                    hours,
+                    "",
+                    title,
+                    author,
+                    editorial,
+                    publishedYear,
+                    MaterialType.VIDEO_MEDIA,
+                    availableArticle,
+                    "",
+                    "",
+                    copies
+            );
+
+            Generic<VideoMediaModel> obj = new Generic<>();
+            obj.setContent(videoMedia);
+
+            try {
+                if (controller.insertArticle(obj.getContent())) {
+                    System.out.println("La información ha sido insertada correctamente!!");
+                    System.out.println("El libro: \n"
+                            + " id: " + obj.getContent().getId() + "\n"
+                            + " title: " + obj.getContent().getTitle() + "\n"
+                            + " author " + obj.getContent().getAuthor() + "\n"
+                            + " editorial " + obj.getContent().getEditorial() + "\n"
+                            + " Ha sido Agregado Correctamente"
+                    );
+                } else {
+                    System.out.println("Ha habido un error, por favor intentalo de nuevo");
+                }
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(VideoMediaView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            System.out.println("\nDesea ingresar otro Libro (S/N): ");
+            sw = scan.next().toUpperCase().charAt(0);
+
+        } while (sw == 'S');
+
+    }
+
+    public static void updateVideoMedia() {
+        System.out.println("""
+                           Por favor para actualizar: 
+                           
+                            debes de ingresar de nuevos los datos""");
+
+        System.out.println("Ingrese el id: ");
+        String id = scan.nextLine();
+
+        System.out.println("Ingrese el Titulo de Material Videografico: ");
+        String title = scan.nextLine();
+
+        System.out.println("Ingrese el Nombre del director: ");
+        String author = scan.nextLine();
+
+        System.out.println("Ingrese el Año de Lanzamiento: ");
+        String publishedYear = scan.nextLine();
+
+        System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
+        String isAvailable = scan.nextLine();
+        var availableArticle = "S".equals(isAvailable.toUpperCase()) ? true : false;
+
+        System.out.println("Ingrese el estudio de grabación: ");
+        String editorial = scan.nextLine();
+
+        System.out.println("Ingrese la cantidad de horas que dura el largometraje: ");
+        String hours = scan.nextLine();
+
+        System.out.println("Ingrese el Numero de copias: ");
+        int copies = scan.nextInt();
+
+        VideoMediaModel videoMedia;
+        videoMedia = new VideoMediaModel(
+                hours,
+                id,
+                title,
+                author,
+                editorial,
+                publishedYear,
+                MaterialType.VIDEO_MEDIA,
+                availableArticle,
+                "",
+                "",
+                copies
+        );
+
+        Generic<VideoMediaModel> obj = new Generic<>();
+        obj.setContent(videoMedia);
+
+        try {
+            if (controller.updatedArticle(obj.getContent())) {
+                System.out.println("El libro: \n"
+                        + " id: " + obj.getContent().getId() + "\n"
+                        + " title: " + obj.getContent().getTitle() + "\n"
+                        + " author " + obj.getContent().getAuthor() + "\n"
+                        + " editorial " + obj.getContent().getEditorial() + "\n"
+                        + " Ha sido Actualizado Correctamente"
+                );
+            } else {
+                System.out.println("El articulo no se encuentra en el sistema");
+                System.out.println("No se ha encontrado un material Videografic con el id: \n"
+                        + " id: " + obj.getContent().getId() + "\n"
+                );
+            }
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VideoMediaView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void removeVideoMedia() {
-        
+
         System.out.println("Por favor, ingrese el ID del Video que desea borrar: ");
-    int id = scan.nextInt();
-    scan.nextLine();
-
-    
-    System.out.println("Ha ingresado el ID: " + id);
-    System.out.println("¿Está seguro de que desea borrar este Video? (S/N): ");
-    String confirmacion = scan.nextLine().toUpperCase();
-
-    
-    if (confirmacion.equalsIgnoreCase("S")) {
-        System.out.println("El Video con ID " + id + " ha sido eliminado.");
-        
-    } else {
-        System.out.println("Operación cancelada. El Video no ha sido borrado.");
-    }
-    
-    
-    }
-    
-    
-    public static void listVideoMedia() {
-        
-        System.out.println("Por favor, ingrese el ID del  Video que desea listar: ");
         int id = scan.nextInt();
-    scan.nextLine();
+        scan.nextLine();
 
-    
         System.out.println("Ha ingresado el ID: " + id);
-        System.out.println("¿Está seguro de que desea listar este Video? (S/N): ");
+        System.out.println("¿Está seguro de que desea borrar este Video? (S/N): ");
         String confirmacion = scan.nextLine().toUpperCase();
 
-     
         if (confirmacion.equalsIgnoreCase("S")) {
-        System.out.println("El Video con ID " + id + " ha sido listado.");
-        
+            System.out.println("El Video con ID " + id + " ha sido eliminado.");
+
         } else {
-        System.out.println("Operación cancelada.");
+            System.out.println("Operación cancelada. El Video no ha sido borrado.");
         }
-        
+
     }
-     
-    
+
+    public static void listVideoMedia() {
+        char sw;
+
+        do {
+            scan.nextLine();
+            System.out.println("Por favor, ingrese el ID del libro que desea listar: ");
+            String id = scan.nextLine();
+
+            if (controller.getArticle(id) != null) {
+                LinkedHashMap<String, Object> videoMedia = (LinkedHashMap<String, Object>) controller.getArticle(id);
+
+                videoMedia.forEach((k, v) -> System.out.println("\n" + k + ": " + v + "\n"
+                        + "________________"));
+
+            }
+
+            System.out.println("Desea Consultar un libro más? S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
+
+    }
+
     public static void listMagazines() {
-        
-        
-        
+
     }
-        
-    
-    
+
     public static void listVideoMedias() {
-        
-        
-        
+
     }
-    
+
 }

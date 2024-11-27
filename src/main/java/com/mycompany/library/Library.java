@@ -150,7 +150,8 @@ public class Library {
             System.out.println("2. Actualizar video");
             System.out.println("3. Eliminar video");
             System.out.println("4. Consultar video");
-            System.out.println("5. Volver al menú principal");
+            System.out.println("5. Consultar todos los videos");
+            System.out.println("6. Volver al menú principal");
             System.out.print("Ingrese el número correspondiente a su opción: ");
 
             int opcion = scan.nextInt();
@@ -175,8 +176,13 @@ public class Library {
                     System.out.println("Seleccione esta opción para consultar video.");
                     VideoMediaView.listVideoMedia();
                 }
+                
+                case 5 -> {
+                    System.out.println("Seleccione esta opción para consultar todos los videos.");
+                    VideoMediaView.listVideoMedias();
+                }
 
-                case 5 -> continuar = false;
+                case 6 -> continuar = false;
 
                 default -> System.out.println("Opción no válida. Por favor, seleccione una opción entre 1 y 5.");
             }
