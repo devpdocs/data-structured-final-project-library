@@ -6,21 +6,18 @@ package controller;
 
 import controller.interfaces.IInventoryController;
 import dataAccess.controller.BookAccessController;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import model.BookModel;
 import query.Query;
+import java.util.UUID;
 
 /**
  *
  * @author moies
  */
 public class BookController implements IInventoryController {
-
-    private final ArrayList<BookModel> bookArticleList = new ArrayList<>();
     private final BookAccessController access = new BookAccessController();
     private final ArrayList<BookModel> query;
 
@@ -34,22 +31,20 @@ public class BookController implements IInventoryController {
             if (article == null) {
                 return null;
             } else {
-                // Narrowing Casting object
+            
                 BookModel bookArticle = (BookModel) article;
-       
-                int id = query.size(); 
+                UUID uuid= UUID.randomUUID();
+      
                 
-                bookArticle.setId(id  + 1);
+                bookArticle.setId(uuid.toString());
                 bookArticle.setCreateAt(LocalDate.now().toString());
                 bookArticle.setUpdatedAt(LocalDate.now().toString());
                 
                 query.add(bookArticle);
                 
                 if (sw == 'N') {
-                    // TODO: when the 'sw' contains 'N',that's means than the data must be saved 
-                    access.insertArticle(query, 'N');
-                    
-                    return (ArrayList<T>) this.bookArticleList;
+                    access.accessData(query);
+                    return (ArrayList<T>) query;
 
                 }
 
@@ -62,8 +57,38 @@ public class BookController implements IInventoryController {
     }
 
     @Override
-    public <T> T updatedArticle(T article, int id) throws IllegalAccessException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public <T> T updatedArticle(T article) throws IllegalAccessException {
+        BookModel book = (BookModel) article;
+        
+        
+        try {
+            ArrayList<BookModel> queryset = query;
+            
+            for (int index = 0; index < queryset.size(); index++){
+                BookModel _book = queryset.get(index);
+                
+                if (book.getId() == null ? _book.getId() == null : book.getId().equals(_book.getId())){
+                    queryset.remove(index);
+                    
+                    book.setCreateAt(_book.getCreateAt());
+                    book.setUpdatedAt(LocalDate.now().toString());
+                    
+                    queryset.add(book);
+                    
+                } else {
+                    return null;
+                }
+            }
+            
+            
+            access.accessData(queryset);
+            
+        } catch (IllegalAccessException e){
+            return null;
+        }
+        
+        return null;
+        
     }
 
     @Override

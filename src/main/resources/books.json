@@ -1,13 +1,25 @@
 [{
-        "id": 1,
+        "id": "2bd502e5-fb3c-49f3-8cd5-a6c00c2983a0",
+        "title": " olvido que seremos ",
+        "author": "Hector abad faciolince",
+        "editorial": "Medellín",
+        "publishedYear": "2006",
+        "materialType": "BOOK",
+        "availableArticle": true,
+        "createAt": "2024-11-26",
+        "updatedAt": "2024-11-26",
+        "ncopy": 100,
+        "npages": 518
+    }, {
+        "id": "69119b3a-6c0f-4439-983c-9f505585790f",
         "title": " mayores",
-        "author": "Mi doctor Carlos antonio velez",
-        "editorial": "200",
+        "author": "Mi doctor carlos antonio velez",
+        "editorial": "100",
         "publishedYear": "2020",
         "materialType": "BOOK",
         "availableArticle": true,
         "createAt": "2024-11-26",
         "updatedAt": "2024-11-26",
-        "ncopy": 500,
+        "ncopy": 2,
         "npages": 500
     }]

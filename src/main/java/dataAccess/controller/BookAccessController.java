@@ -15,11 +15,11 @@ import model.BookModel;
  *
  * @author moies
  */
-public class BookAccessController implements IInventoryController {
+public class BookAccessController {
     private final DataManager dataManager = new DataManager();
     private final String path = "books.json";
-    @Override
-    public <T> ArrayList<T> insertArticle(T articles, char sw) throws IllegalAccessException {
+    
+    public <T> ArrayList<T> accessData(T articles) throws IllegalAccessException {
         
         ArrayList<BookModel> books = (ArrayList<BookModel>) articles; 
         try {
@@ -30,24 +30,6 @@ public class BookAccessController implements IInventoryController {
         return null;
     }
 
-    @Override
-    public <T> T updatedArticle(T article, int id) throws IllegalAccessException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <T> T getArticle(int id) throws NoSuchElementException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <T> ArrayList<T> getArticles() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public <T> T removedArticle(int id) throws NoSuchElementException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
     
 }

@@ -18,7 +18,7 @@ public interface IInventoryController {
 
     public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException;
 
-    public <T> T updatedArticle(T article, int id) throws IllegalAccessException;
+    public <T> T updatedArticle(T article) throws IllegalAccessException;
 
     public <T> T getArticle(int id) throws NoSuchElementException;
 

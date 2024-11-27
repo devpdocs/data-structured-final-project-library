@@ -4,7 +4,7 @@ import interfaces.MaterialType;
 
 abstract class InventoryModel {
 
-    protected int id;
+    protected String id;
     protected String title;
     protected String author;
     protected String editorial;
@@ -15,11 +15,11 @@ abstract class InventoryModel {
     protected String updatedAt;
     protected int ncopy;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,7 +95,7 @@ abstract class InventoryModel {
         this.ncopy = ncopy;
     }
 
-    public InventoryModel(int id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, String createAt, String updatedAt, int ncopy) {
+    public InventoryModel(String id, String title, String author, String editorial, String publishedYear, MaterialType materialType, boolean availableArticle, String createAt, String updatedAt, int ncopy) {
         this.id = id;
         this.title = title;
         this.author = author;

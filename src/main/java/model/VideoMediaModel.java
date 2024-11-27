@@ -7,7 +7,7 @@ public class VideoMediaModel extends InventoryModel {
 
     private String hours; // Duración 
 
-    public VideoMediaModel(String hours, int id,
+    public VideoMediaModel(String hours, String id,
             String title,
             String author,
             String editorial,

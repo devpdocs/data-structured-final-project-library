@@ -8,7 +8,7 @@ public class BookModel extends InventoryModel {
     private int nPages; // Número de páginas del libro
 
     public BookModel(
-            int id,
+            String  id,
             int nPages,
             String title,
             String author,

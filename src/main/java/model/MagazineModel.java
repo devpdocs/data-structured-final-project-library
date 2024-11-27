@@ -9,7 +9,7 @@ public class MagazineModel extends InventoryModel {
     private String gender; // Género de la revista
 
     public MagazineModel(String branch, String gender, int nPages,
-            int id,
+            String id,
             String title,
             String author,
             String editorial,
