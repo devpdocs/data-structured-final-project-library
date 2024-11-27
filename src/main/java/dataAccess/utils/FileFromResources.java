@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
  *
  * @author moies
  */
-public class FilePath {
+public class FileFromResources {
     static DataManager dataController = new DataManager();
     
     public static File path (String file) throws URISyntaxException{

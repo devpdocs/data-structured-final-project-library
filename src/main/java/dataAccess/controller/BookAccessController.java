@@ -7,7 +7,6 @@ import controller.interfaces.IInventoryController;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.BookModel;

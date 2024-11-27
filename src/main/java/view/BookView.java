@@ -7,7 +7,7 @@ package view;
 import controller.BookController;
 import dto.Generic;
 import interfaces.MaterialType;
-import java.time.LocalDate;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.BookModel;
@@ -27,21 +27,22 @@ public class BookView {
         
         do {
             
-            System.out.println("Ingrese el Titulo de libro: ");
-            String title = scan.next();
+            System.out.println("\nIngrese el Titulo de libro: ");
+            scan.next();
+            String title = scan.nextLine();
 
             System.out.println("Ingrese el Nombre del autor: ");
-            String author = scan.next();
+            String author = scan.nextLine();
 
             System.out.println("Ingrese el Año de publicacion: ");
-            String publishedYear = scan.next();
+            String publishedYear = scan.nextLine();
 
             System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
-            String isAvailable = scan.next();
-            boolean availableArticle = isAvailable.equals('S') ? true : false;
+            String isAvailable = scan.nextLine();
+            var availableArticle = "S".equals(isAvailable) ? true : false;
 
             System.out.println("Ingrese la Casa editorial: ");
-            String editorial = scan.next();
+            String editorial = scan.nextLine();
 
             System.out.println("Ingrese el Numero de paginas: ");
             int nPages = scan.nextInt();

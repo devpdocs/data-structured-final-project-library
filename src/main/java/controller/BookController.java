@@ -6,11 +6,13 @@ package controller;
 
 import controller.interfaces.IInventoryController;
 import dataAccess.controller.BookAccessController;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import model.BookModel;
+import query.Query;
 
 /**
  *
@@ -20,6 +22,11 @@ public class BookController implements IInventoryController {
 
     private final ArrayList<BookModel> bookArticleList = new ArrayList<>();
     private final BookAccessController access = new BookAccessController();
+    private final ArrayList<BookModel> query;
+
+    public BookController() {
+        this.query = Query.<BookModel>get("books.json");
+    }
 
     @Override
     public <T> ArrayList<T> insertArticle(T article, char sw) throws IllegalAccessException {
@@ -29,17 +36,18 @@ public class BookController implements IInventoryController {
             } else {
                 // Narrowing Casting object
                 BookModel bookArticle = (BookModel) article;
-                // book id
-                int id = bookArticleList.size(); 
-                bookArticle.setId(id);
+       
+                int id = query.size(); 
+                
+                bookArticle.setId(id  + 1);
                 bookArticle.setCreateAt(LocalDate.now().toString());
                 bookArticle.setUpdatedAt(LocalDate.now().toString());
                 
-                this.bookArticleList.add(bookArticle);
-
+                query.add(bookArticle);
+                
                 if (sw == 'N') {
                     // TODO: when the 'sw' contains 'N',that's means than the data must be saved 
-                    access.insertArticle(this.bookArticleList, 'N');
+                    access.insertArticle(query, 'N');
                     
                     return (ArrayList<T>) this.bookArticleList;
 
@@ -72,5 +80,7 @@ public class BookController implements IInventoryController {
     public <T> T removedArticle(int id) throws NoSuchElementException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }
