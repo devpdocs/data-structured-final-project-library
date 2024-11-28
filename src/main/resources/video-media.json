@@ -1,0 +1,25 @@
+[{
+        "id": "c86e6702-e4de-42d2-92c2-cc526052f070",
+        "title": "Interstellar",
+        "author": "Cristofer nolan",
+        "editorial": "hwollwqoqoq",
+        "publishedYear": "2013",
+        "materialType": "VIDEO_MEDIA",
+        "availableArticle": true,
+        "createAt": "2024-11-27",
+        "updatedAt": "2024-11-27",
+        "ncopy": 100,
+        "hours": "2:30"
+    }, {
+        "id": "c2cdd50b-7be5-4bba-ad8e-c7675703d157",
+        "title": "Kick buttosky",
+        "author": "xd",
+        "editorial": "disney",
+        "publishedYear": "2009",
+        "materialType": "VIDEO_MEDIA",
+        "availableArticle": true,
+        "createAt": "2024-11-27",
+        "updatedAt": "2024-11-27",
+        "ncopy": 100,
+        "hours": "100:000"
+    }]
