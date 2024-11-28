@@ -176,7 +176,7 @@ public class VideoMediaView {
 
             }
 
-            System.out.println("Desea Consultar un libro más? S/N");
+            System.out.println("Desea Consultar un video más? S/N");
             sw = scan.next().toUpperCase().charAt(0);
         } while (sw == 'S');
 
@@ -214,13 +214,13 @@ public class VideoMediaView {
             String id = scan.nextLine();
 
             if (controller.removedArticle(id)) {
-                System.out.println("\nEl libro con el ID: " + id + " Ha sido eliminado");
+                System.out.println("\nEl video con el ID: " + id + " Ha sido eliminado");
             } else {
-                System.out.println("\nEl libro con el ID: " + id + " no ha sido eliminado");
+                System.out.println("\nEl vide con el ID: " + id + " no ha sido eliminado");
                 System.out.println("\nPor favor verifiqué el ID");
             }
 
-            System.out.println("Desea Eliminar un libro más S/N");
+            System.out.println("Desea Eliminar un video más S/N");
             sw = scan.next().toUpperCase().charAt(0);
         } while (sw == 'S');
 

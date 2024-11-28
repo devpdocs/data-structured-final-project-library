@@ -5,10 +5,10 @@ import interfaces.MaterialType;
 
 public class MagazineModel extends InventoryModel {
 
-    private String branch; // Tipo de revista
+    private String brand; // Tipo de revista
     private String gender; // Género de la revista
 
-    public MagazineModel(String branch, String gender, int nPages,
+    public MagazineModel(String brand, String gender,
             String id,
             String title,
             String author,
@@ -20,16 +20,16 @@ public class MagazineModel extends InventoryModel {
             String updatedAt,
             int ncopy) {
         super(id, title, author, editorial, publishedYear, MaterialType.MAGAZINE, availableArticle, createdAt, updatedAt, ncopy);
-        this.branch = branch;
+        this.brand = brand;
         this.gender = gender;
     }
 
-    public String getBranch() {
-        return branch;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getGender() {

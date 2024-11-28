@@ -3,7 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view;
+import controller.MagazineController;
+import dto.Generic;
+import interfaces.MaterialType;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.MagazineModel;
+
+
 /**
  *
  * @author arqua
@@ -11,211 +21,232 @@ import java.util.Scanner;
 public class MagazineView {
     
     
-     private static MagazineView Magazine = new MagazineView();
-    private static Scanner scan = new Scanner(System.in);
-    
-    public static void updateMagazine() {
-        
-          String title;
-          String author;
-          String materialType; 
-          String publishedYear;
-          boolean availableArticle;
-          String editorial;
-          int nPages;
-          int id;
-          String brand;
-          String gender;
-          int copies;
-          
-     do{      
-          System.out.println("¿Desea actualizar el Titulo de la revista (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Título: ");
-            title = scan.nextLine();
-        }
+     static Scanner scan = new Scanner(System.in);
 
-        System.out.println("¿Desea actualizar el Autor? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Autor: ");
-            author = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar el Tipo de material? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Tipo de material: ");
-            materialType = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar el Año de publicación? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Año de publicación: ");
-            publishedYear = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar la disponibilidad? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese si está disponible (true/false): ");
-            availableArticle = scan.nextBoolean();
-            scan.nextLine(); 
-        }
-
-        System.out.println("¿Desea actualizar la Editorial? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese la nueva Editorial: ");
-            editorial = scan.nextLine();
-        }
-
-        System.out.println("¿Desea actualizar el Número de páginas? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Número de páginas: ");
-            nPages = scan.nextInt();
-            scan.nextLine(); 
-        }
-        
-        System.out.println("¿Desea actualizar el genero? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Número de páginas: ");
-            gender = scan.nextLine();
-            scan.nextLine(); 
-        }
-        
-        
-        System.out.println("¿Desea actualizar marca de la revista? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo Número de páginas: ");
-            brand = scan.nextLine();
-            scan.nextLine(); 
-        }
-
-        System.out.println("¿Desea actualizar la cantidad de copias? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo ID: ");
-            copies = scan.nextInt();
-            scan.nextLine(); 
-        }
-        
-        
-        System.out.println("¿Desea actualizar el ID de la revista? (S/N): ");
-        if (scan.nextLine().equalsIgnoreCase("S")) {
-            System.out.println("Ingrese el nuevo ID: ");
-            id = scan.nextInt();
-            scan.nextLine(); 
-        }
-        
-      }  while (scan.nextLine().equalsIgnoreCase("S"));  
-
-        
-//        System.out.println("Actualización completada:");
-//        System.out.println("Título: " + title);
-//        System.out.println("Autor: " + author);
-//        System.out.println("Tipo de material: " + materialType);
-//        System.out.println("Año de publicación: " + publishedYear);
-//        System.out.println("Disponible: " + availableArticle);
-//        System.out.println("Editorial: " + editorial);
-//        System.out.println("Número de páginas: " + nPages);
-//        System.out.println("Genero: " + gender);
-//        System.out.println("Marca: " + brand);
-//        System.out.println("Número de Copias: " + copies);
-//        System.out.println("ID: " + id);
-
-        scan.close();
-          
-    } 
+    static MagazineController controller = new MagazineController();
     
     public static void insertMagazine() {
         
-        String title;
-          String author;
-          String materialType; 
-          String publishedYear;
-          boolean availableArticle;
-          String editorial;
-          int nPages;
-          int id;
-          String brand;
-          String gender;
-          int copies;
-          
-          System.out.println("Ingrese el Titulo de la revista: ");
-            title = scan.nextLine();
+        char sw;
+
+        do {
+
+            scan.nextLine();
+            System.out.println("Ingrese el Titulo de la revista: ");
+            String title = scan.nextLine();
+
+            System.out.println("Ingrese el nombre de la distribuidora: ");
+            String author = scan.nextLine();
+
+            System.out.println("El año de publicación: ");
+            String publishedYear = scan.nextLine();
+
+            System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
+            String isAvailable = scan.nextLine();
+            var availableArticle = "S".equals(isAvailable.toUpperCase()) ? true : false;
+
+            System.out.println("Ingrese el estudio la editorial: ");
+            String editorial = scan.nextLine();
+
+            System.out.println("ingrese el genero de la revista: ");
+            String gender = scan.nextLine();
             
-            System.out.println("Ingrese el Nombre del autor: ");
-            author = scan.nextLine();
-            
-            System.out.println("Ingrese el Tipo de material: ");
-            materialType = scan.nextLine();
-            
-            System.out.println("Ingrese el Año de publicacion: ");
-            publishedYear = scan.nextLine();
-            
-            System.out.println("Ingrese si esta Disponible: S/N ");
-            availableArticle = scan.nextBoolean();
-            
-            System.out.println("Ingrese la Casa editorial: ");
-            editorial = scan.nextLine();
-            
-            System.out.println("Ingrese el Numero de paginas: ");
-            nPages = scan.nextInt();
-            
-            System.out.println("Ingrese el genero: ");
-            gender = scan.nextLine();
-            
-            System.out.println("Ingrese la marca para la revista: ");
-            brand = scan.nextLine();
-            
-            System.out.println("Ingrese la cantidad de copias de la revista: ");
-            copies = scan.nextInt();
-            
-            System.out.println("Ingrese el ID para la revista: ");
-            id = scan.nextInt();
+            System.out.println("ingrese la marca de la revista: ");
+            String brand = scan.nextLine();
+
+            System.out.println("Ingrese el Numero de copias: ");
+            int copies = scan.nextInt();
+           
+
+
+            MagazineModel magazineModel = new MagazineModel(
+                    
+                    brand,
+                    gender,
+                    "",
+                    title,
+                    author,
+                    editorial,
+                    publishedYear,
+                    MaterialType.MAGAZINE,
+                    availableArticle,
+                    "",
+                    "",
+                    copies
+            );
+
+            Generic<MagazineModel> obj = new Generic<>();
+            obj.setContent(magazineModel);
+
+            try {
+                if (controller.insertArticle(obj.getContent())) {
+                    System.out.println("La información ha sido insertada correctamente!!");
+                    System.out.println("El libro: \n"
+                            + " id: " + obj.getContent().getId() + "\n"
+                            + " title: " + obj.getContent().getTitle() + "\n"
+                            + " author " + obj.getContent().getAuthor() + "\n"
+                            + " editorial " + obj.getContent().getEditorial() + "\n"
+                            + " Ha sido Agregado Correctamente"
+                    );
+                } else {
+                    System.out.println("Ha habido un error, por favor intentalo de nuevo");
+                }
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(VideoMediaView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            System.out.println("\nDesea ingresar otra revista (S/N): ");
+            sw = scan.next().toUpperCase().charAt(0);
+
+        } while (sw == 'S');
+        
     } 
+    
+    public static void updateMagazine() {
+        
+        System.out.println("""
+                           Por favor para actualizar: 
+                           
+                            debes de ingresar de nuevos los datos""");
+        System.out.println("Ingrese el id: ");
+        String id = scan.nextLine();
+        
+        System.out.println("Ingrese el Titulo de la revista: ");
+            String title = scan.nextLine();
+
+            System.out.println("Ingrese el nombre de la distribuidora: ");
+            String author = scan.nextLine();
+
+            System.out.println("El año de publicación: ");
+            String publishedYear = scan.nextLine();
+
+            System.out.println("Ingrese si esta Disponible fuera de la biblioteca: S/N ");
+            String isAvailable = scan.nextLine();
+            var availableArticle = "S".equals(isAvailable.toUpperCase()) ? true : false;
+
+            System.out.println("Ingrese el estudio la editorial: ");
+            String editorial = scan.nextLine();
+
+            System.out.println("ingrese el genero de la revista: ");
+            String gender = scan.nextLine();
+            
+            System.out.println("ingrese la marca de la revista: ");
+            String brand = scan.nextLine();
+
+            System.out.println("Ingrese el Numero de copias: ");
+            int copies = scan.nextInt();
+            
+            
+            
+            MagazineModel magazineModel = new MagazineModel(
+                    
+                    brand,
+                    gender,
+                    id,
+                    title,
+                    author,
+                    editorial,
+                    publishedYear,
+                    MaterialType.MAGAZINE,
+                    availableArticle,
+                    "",
+                    "",
+                    copies
+            );
+
+            Generic<MagazineModel> obj = new Generic<>();
+            obj.setContent(magazineModel);
+            
+            
+            try {
+            if (controller.updatedArticle(obj.getContent())) {
+                System.out.println("El libro: \n"
+                        + " id: " + obj.getContent().getId() + "\n"
+                        + " title: " + obj.getContent().getTitle() + "\n"
+                        + " author " + obj.getContent().getAuthor() + "\n"
+                        + " editorial " + obj.getContent().getEditorial() + "\n"
+                        + " Ha sido Actualizado Correctamente"
+                );
+            } else {
+                System.out.println("El articulo no se encuentra en el sistema");
+                System.out.println("No se ha encontrado una revista con el id: \n"
+                        + " id: " + obj.getContent().getId() + "\n"
+                );
+            }
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MagazineView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+          
+    } 
+    
+    
     
     public static void removeMagazine() {
         
-        System.out.println("Por favor, ingrese el ID de la revista que desea borrar: ");
-    int id = scan.nextInt();
-    scan.nextLine();
+        char sw;
 
-    
-    System.out.println("Ha ingresado el ID: " + id);
-    System.out.println("¿Está seguro de que desea borrar esta revista? (S/N): ");
-    String confirmacion = scan.nextLine().toUpperCase();
+        do {
+            scan.nextLine();
+            System.out.println("Por favor, ingrese el ID de la revista que desea eliminar: ");
+            String id = scan.nextLine();
 
-    
-    if (confirmacion.equalsIgnoreCase("S")) {
-        System.out.println("La revista con ID " + id + " ha sido eliminada.");
-        
-    } else {
-        System.out.println("Operación cancelada. La revista no ha sido borrada.");
-    }
+            if (controller.removedArticle(id)) {
+                System.out.println("\nLa revista con el ID: " + id + " Ha sido eliminado");
+            } else {
+                System.out.println("\nLa revista con el ID: " + id + " no ha sido eliminado");
+                System.out.println("\nPor favor verifiqué el ID");
+            }
+
+            System.out.println("Desea Eliminar una revista más S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
     } 
     
     public static void listMagazine() {
         
-        System.out.println("Por favor, ingrese el ID de La revista que desea listar: ");
-        int id = scan.nextInt();
-    scan.nextLine();
+        char sw;
 
-    
-        System.out.println("Ha ingresado el ID: " + id);
-        System.out.println("¿Está seguro de que desea listar esta revista? (S/N): ");
-        String confirmacion = scan.nextLine().toUpperCase();
+        do {
+            scan.nextLine();
+            System.out.println("Por favor, ingrese el ID de la revista que desea listar: ");
+            String id = scan.nextLine();
 
-     
-        if (confirmacion.equalsIgnoreCase("S")) {
-        System.out.println("La revista con ID " + id + " ha sido listada.");
-        
-        } else {
-        System.out.println("Operación cancelada.");
-        }
+            if (controller.getArticle(id) != null) {
+                LinkedHashMap<String, Object> magazine = (LinkedHashMap<String, Object>) controller.getArticle(id);
+
+                magazine.forEach((k, v) -> System.out.println("\n" + k + ": " + v + "\n"
+                        + "________________"));
+
+            }
+
+            System.out.println("Desea Consultar una revista más? S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
         
     }
      
     
     public static void listMagazines() {
         
-        
+        char sw;
+
+        do {
+
+            if (controller.getArticles() != null) {
+                ArrayList<LinkedHashMap<String, Object>> magazine = controller.getArticles();
+
+                for (LinkedHashMap<String, Object> video : magazine) {
+                    video.forEach((k, v) -> System.out.println("" + k + ": " + v + "\n"
+                            + "________________"));
+                    System.out.println("======================================");
+                }
+
+            }
+
+            System.out.println("Quieres consultar las revistas otra vez? S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
         
     }
     

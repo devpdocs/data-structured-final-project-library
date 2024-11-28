@@ -107,8 +107,9 @@ public class Library {
             System.out.println("1. Ingresar revista");
             System.out.println("2. Actualizar revista");
             System.out.println("3. Eliminar revista");
-            System.out.println("4. Consultar revistas");
-            System.out.println("5. Volver al menú principal");
+            System.out.println("4. Consultar revista");
+            System.out.println("5 Consultar todas las revistas");
+            System.out.println("6. Volver al menú principal");
             System.out.print("Ingrese el número correspondiente a su opción: ");
 
             int opcion = scan.nextInt();
@@ -133,8 +134,13 @@ public class Library {
                     System.out.println("Seleccione esta opción para consultar revistas.");
                     MagazineView.listMagazine();
                 }
+                
+                case 5 -> {
+                    System.out.println("Seleccione esta opción para consultar todas las revistas.");
+                    MagazineView.listMagazines();
+                }
 
-                case 5 -> continuar = false;
+                case 6 -> continuar = false;
 
                 default -> System.out.println("Opción no válida. Por favor, seleccione una opción entre 1 y 5.");
             }
