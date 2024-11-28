@@ -4,6 +4,7 @@ import dto.Generic;
 import interfaces.MaterialType;
 import java.util.Scanner;
 import controller.VideoMeidaController;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -159,31 +160,12 @@ public class VideoMediaView {
         }
     }
 
-    public static void removeVideoMedia() {
-
-        System.out.println("Por favor, ingrese el ID del Video que desea borrar: ");
-        int id = scan.nextInt();
-        scan.nextLine();
-
-        System.out.println("Ha ingresado el ID: " + id);
-        System.out.println("¿Está seguro de que desea borrar este Video? (S/N): ");
-        String confirmacion = scan.nextLine().toUpperCase();
-
-        if (confirmacion.equalsIgnoreCase("S")) {
-            System.out.println("El Video con ID " + id + " ha sido eliminado.");
-
-        } else {
-            System.out.println("Operación cancelada. El Video no ha sido borrado.");
-        }
-
-    }
-
     public static void listVideoMedia() {
         char sw;
 
         do {
             scan.nextLine();
-            System.out.println("Por favor, ingrese el ID del libro que desea listar: ");
+            System.out.println("Por favor, ingrese el ID del video que desea listar: ");
             String id = scan.nextLine();
 
             if (controller.getArticle(id) != null) {
@@ -200,11 +182,47 @@ public class VideoMediaView {
 
     }
 
-    public static void listMagazines() {
+    public static void listVideoMedias() {
+        char sw;
+
+        do {
+
+            if (controller.getArticles() != null) {
+                ArrayList<LinkedHashMap<String, Object>> videos = controller.getArticles();
+
+                for (LinkedHashMap<String, Object> video : videos) {
+                    video.forEach((k, v) -> System.out.println("" + k + ": " + v + "\n"
+                            + "________________"));
+                    System.out.println("======================================");
+                }
+
+            }
+
+            System.out.println("Quieres consultar los videos otra vez? S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
 
     }
 
-    public static void listVideoMedias() {
+    public static void removeVideoMedia() {
+
+        char sw;
+
+        do {
+            scan.nextLine();
+            System.out.println("Por favor, ingrese el ID del video que desea eliminar: ");
+            String id = scan.nextLine();
+
+            if (controller.removedArticle(id)) {
+                System.out.println("\nEl libro con el ID: " + id + " Ha sido eliminado");
+            } else {
+                System.out.println("\nEl libro con el ID: " + id + " no ha sido eliminado");
+                System.out.println("\nPor favor verifiqué el ID");
+            }
+
+            System.out.println("Desea Eliminar un libro más S/N");
+            sw = scan.next().toUpperCase().charAt(0);
+        } while (sw == 'S');
 
     }
 
